@@ -23,4 +23,17 @@ public class App1Service {
             System.out.println("Error in sending request to APP2");
         }
     }
+
+    @Async
+    public void sendMessageToApp2Delayed(){
+        for (int i = 0; i < 20; i++) {
+            try {
+                String response = restTemplate.getForObject("http://localhost:8081/app2/message", String.class);
+                System.out.println("Response from app2 " + response + " - "+ i);
+                Thread.sleep(10000);
+            } catch (Exception e){
+                System.out.println("Error in sending request to APP2");
+            }
+        }
+    }
 }

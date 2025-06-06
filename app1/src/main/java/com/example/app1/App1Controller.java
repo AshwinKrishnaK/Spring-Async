@@ -16,4 +16,10 @@ public class App1Controller {
         return "Message send to App2";
     }
 
+    @GetMapping("/request")
+    public String app2DelayedAsync(){
+        service.sendMessageToApp2Delayed();
+        return "Message send to APP2 - Delayed";
+    }
+
 }
